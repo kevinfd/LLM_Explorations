@@ -1,0 +1,24 @@
+{
+  "pass": true,
+  "checks": [
+    "PASS  backprop on xor: solve-rate 100% (want >= 70%)",
+    "PASS  decoy_sign_flipped on xor: solve-rate 0% (want <= 10%)",
+    "PASS  backprop on parity3: solve-rate 100% (want >= 70%)",
+    "PASS  decoy_sign_flipped on parity3: solve-rate 0% (want <= 10%)",
+    "PASS  backprop on encoder424: solve-rate 100% (want >= 70%)",
+    "PASS  decoy_sign_flipped on encoder424: solve-rate 0% (want <= 10%)",
+    "PASS  decoy_shuffled_credit on xor: solve-rate 10% (want <= 10%)",
+    "PASS  delta_no_hidden on xor: solve-rate 0% (want <= 0%)",
+    "PASS  delta_no_hidden on parity3: solve-rate 0% (want <= 0%)",
+    "PASS  joint functional-success(backprop) == True",
+    "PASS  joint functional-success(backprop_plain) == True",
+    "PASS  joint functional-success(decoy_sign_flipped) == False",
+    "PASS  joint functional-success(decoy_shuffled_credit) == False",
+    "PASS  joint functional-success(output_only_delta) == False",
+    "PASS  joint functional-success(delta_no_hidden) == False",
+    "PASS  joint functional-success(random_search) == False",
+    "PASS  backprop beats random_search on xor (100% vs 100%)",
+    "PASS  backprop beats random_search on parity3 (100% vs 0%)",
+    "PASS  backprop beats random_search on encoder424 (100% vs 10%)"
+  ]
+}
