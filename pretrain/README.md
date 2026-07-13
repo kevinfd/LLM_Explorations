@@ -67,23 +67,33 @@ python -m pretrain.cutoff                            # just the audit
 Artifacts land in `results/pretrain/`: `cutoff_audit.md`, `tokenizer.json`,
 dense `checkpoints/`, `probe_report.md`, `summary.json`.
 
-## What this establishes
+## What this establishes (full run: 3.2M params, vocab 3000, 3000 steps, 1900 cutoff)
 
 1. **The cutoff machinery works on real data.** The provenance gate + content
    canary certify the admitted corpus period-pure; the tokenizer and generation
    canaries confirm post-cutoff entities are neither learned as units nor
    emitted. These are the hard guarantees the whole experiment rests on, and
-   they hold.
+   they hold. **PASS.**
 2. **The pipeline is a real from-scratch stack.** A BPE tokenizer and a decoder
-   transformer are trained from zero on the filtered corpus, with fixed data
-   order and dense checkpoints — the reproducibility posture of §6.
-3. **The behavioral era signal is scale-limited, exactly as the spec
-   predicts.** At a few million parameters and ~1–2 epochs, entity-level
-   prediction barely separates pre- from post-cutoff names, because a model this
-   small hasn't reliably memorized even its *training* entities — the BabyLM /
-   "too small to reason" regime the spec calls out ([BB1]; GPT-1900). The pilot
-   validates the instrument; the signal it measures is what the real scale-up
-   (§9 P2/P3) is for.
+   transformer are trained from zero on the filtered corpus (val loss 8.17 →
+   2.72), with fixed data order and dense checkpoints — the reproducibility
+   posture of §6.
+3. **The behavioral era signal appears once the model is trained enough — and
+   its scale-dependence is itself the finding the spec predicts.**
+   - At **1.8M params / 600 steps** (well under one epoch), entity prediction
+     did *not* separate eras (gap ≈ −0.2): the model hadn't memorized even its
+     *training* entities — the BabyLM / "too small to reason" regime ([BB1];
+     GPT-1900).
+   - At **3.2M params / 3000 steps / dropout 0** (≈2 epochs), it separates
+     cleanly: mean pre-cutoff entity surprisal **5.20** vs post-cutoff **7.55**
+     nats (**era gap 2.35**, margin 1.0 → PASS). Every pre-cutoff entity (Ahab
+     2.4, Alice 3.6, Ishmael 3.4) is predicted better than every post-cutoff one
+     (MacIan 9.7, Turnbull 8.9, Gregory 8.5). Raw perplexity agrees once genre
+     is matched (pre **15.5** < post **21.2**).
+
+   So the pilot both validates the instrument *and* traces the scale threshold
+   at which "does the model know the post-cutoff thing?" becomes measurable —
+   the core question the full scale-up (§9 P2/P3) is built to answer.
 
 ## Scaling to the real experiment
 
