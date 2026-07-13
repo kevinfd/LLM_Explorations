@@ -4,6 +4,13 @@ Research specs and experiments around large language models.
 
 ## Contents
 
+- [`pretrain/`](pretrain/) — **Runnable time-locked pretraining pipeline.** The
+  spec's Phase-P1 slice: provenance-first corpus → hard cutoff filter +
+  anachronism-canary audit → from-scratch BPE tokenizer → from-scratch tiny
+  transformer with dense checkpoints → cutoff-integrity acceptance probes. Runs
+  on a laptop CPU against real public-domain text (1599–1920, cutoff 1900). The
+  scale-independent hard cutoff guarantees pass; the behavioral era signal is
+  scale-limited exactly as the spec predicts (see `pretrain/README.md`).
 - [`mvp/`](mvp/) — **Runnable MVP of the spec's verifier harness.** The
   period-clean reward channel (propose a learning rule → it gets implemented and
   compute-metered on XOR/parity/encoder), validated against positive controls,
