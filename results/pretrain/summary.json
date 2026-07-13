@@ -1,0 +1,38 @@
+{
+  "cutoff_year": 1900,
+  "admitted_docs": [
+    "shakespeare-caesar",
+    "shakespeare-hamlet",
+    "shakespeare-macbeth",
+    "bible-kjv",
+    "milton-paradise",
+    "blake-poems",
+    "edgeworth-parents",
+    "austen-sense",
+    "austen-emma",
+    "austen-persuasion",
+    "melville-moby_dick",
+    "whitman-leaves",
+    "carroll-alice"
+  ],
+  "excluded_docs": [
+    "chesterton-thursday",
+    "chesterton-ball",
+    "chesterton-brown",
+    "bryant-stories",
+    "burgess-busterbrown"
+  ],
+  "corpus_clean": true,
+  "vocab_size": 3000,
+  "model_params": 3184128,
+  "train_tokens": 4438324,
+  "initial_val_loss": 8.171112203598023,
+  "final_val_loss": 2.716122478246689,
+  "pre_entity_mean_nll": 5.197138590282864,
+  "post_entity_mean_nll": 7.5459444808959955,
+  "era_gap": 2.3488058906131313,
+  "pre_cutoff_ppl": 15.473279363735518,
+  "post_cutoff_ppl": 21.176675160615048,
+  "cutoff_respected": true,
+  "wall_seconds": 933.8868219852448
+}

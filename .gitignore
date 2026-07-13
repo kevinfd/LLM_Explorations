@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+pretrain/.cache/
+results/pretrain/checkpoints/
+results_bigrun.log
